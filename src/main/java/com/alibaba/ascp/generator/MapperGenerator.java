@@ -27,9 +27,6 @@ import static freemarker.template.Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENT
  */
 public class MapperGenerator {
 
-    // 模板目录和输出目录
-    private static final String output = "src/main/java/" + CommonContants.resultPath;
-
     /**
      *
      * 生成的代码会有很多冗余，请根据实际情况清理冗余代码，以免增加后续维护的代价
@@ -84,8 +81,8 @@ public class MapperGenerator {
         for (String templateFileName : templateOutputFileMap.keySet()) {
             Template template = cfg.getTemplate(templateFileName,"UTF-8");
             String fileName = templateOutputFileMap.get(templateFileName);
-            System.out.println("generating file :" + fileName);
-            Writer out = new OutputStreamWriter(new FileOutputStream(new File(output + "/" + fileName)),"UTF-8");
+            System.out.println("generating file: " + fileName);
+            Writer out = new OutputStreamWriter(new FileOutputStream(new File(CommonContants.output + "/" + fileName)),"UTF-8");
             template.process(root, out);
             out.flush();
             out.close();

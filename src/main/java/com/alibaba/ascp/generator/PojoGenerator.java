@@ -82,7 +82,7 @@ public class PojoGenerator {
         String output = "src/main/java/" + CommonContants.resultPath;
         Template template = cfg.getTemplate("template/XxxPO.ftl","UTF-8");
         String fileName = className + ".java";
-        Writer out = new OutputStreamWriter(new FileOutputStream(new File(output + "/" + fileName)),"UTF-8");
+        Writer out = new OutputStreamWriter(new FileOutputStream(new File(CommonContants.output + "/" + fileName)),"UTF-8");
         template.process(root, out);
         out.flush();
         out.close();

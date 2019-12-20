@@ -23,6 +23,5 @@ public class BootStrap {
         PojoGenerator.generatePojoAndReturnContext(contextInfo);
 
         MapperGenerator.generate(contextInfo);
-
     }
 }
