@@ -1,0 +1,22 @@
+CREATE TABLE `fulfill_order_0005` (
+  `id` bigint(20) unsigned NOT NULL COMMENT '主键',
+  `out_id` varchar(512) NOT NULL COMMENT '外部关联订单id',
+  `market_order_id` bigint(20) unsigned NOT NULL COMMENT '销售订单id',
+  `status` int(11) NOT NULL COMMENT '状态',
+  `biz_code` varchar(128) DEFAULT NULL COMMENT '业务code',
+  `flow_id` bigint(20) unsigned DEFAULT NULL COMMENT '流程id',
+  `refund_status` int(11) DEFAULT NULL COMMENT '退款状态',
+  `buyer_id` bigint(20) unsigned NOT NULL COMMENT '买家id',
+  `buyer_nicker` varchar(1024) NOT NULL COMMENT '买家昵称',
+  `seller_id` bigint(20) unsigned NOT NULL COMMENT '卖家id',
+  `seller_nicker` varchar(1024) NOT NULL COMMENT '卖家昵称',
+  `attribute_cc` int(11) NOT NULL DEFAULT '0' COMMENT '版本号',
+  `attributes` varchar(4096) DEFAULT NULL COMMENT '拓展属性',
+  `gmt_create` datetime NOT NULL COMMENT '创建时间',
+  `gmt_modified` datetime NOT NULL COMMENT '修改时间',
+  `pay_time` datetime DEFAULT NULL COMMENT '付款时间',
+  `end_time` datetime DEFAULT NULL COMMENT '结束时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_buyer_id` (`buyer_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='履行单表'
+;
