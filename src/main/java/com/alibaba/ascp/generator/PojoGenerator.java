@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.alibaba.ascp.constants.CommonContants;
+import com.alibaba.ascp.constants.CommonConstants;
 import com.alibaba.ascp.pojo.ContextInfo;
 import com.alibaba.ascp.util.ConvertUtils;
 import freemarker.template.*;
@@ -16,7 +16,7 @@ import org.apache.commons.io.IOUtils;
 
 import com.google.common.collect.Lists;
 
-import static com.alibaba.ascp.constants.CommonContants.TAB;
+import static com.alibaba.ascp.constants.CommonConstants.TAB;
 import static freemarker.template.Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS;
 
 /**
@@ -78,18 +78,18 @@ public class PojoGenerator {
 
         root.put("className", className);
         root.put("result", resultStr);
-        root.put("package", CommonContants.RESULT_PACKAGE);
+        root.put("package", CommonConstants.RESULT_PACKAGE);
 
         Template template = cfg.getTemplate("template/XxxPO.ftl","UTF-8");
         String fileName = className + ".java";
-        Writer out = new OutputStreamWriter(new FileOutputStream(new File(CommonContants.RESULT_PATH + "/" + fileName)),"UTF-8");
+        Writer out = new OutputStreamWriter(new FileOutputStream(new File(CommonConstants.RESULT_PATH + "/" + fileName)),"UTF-8");
         template.process(root, out);
         out.flush();
         out.close();
 
         contextInfo.setPojoFields(pojoFields);
         contextInfo.setDbFields(dbFields);
-        contextInfo.setFullQualifiedName(CommonContants.RESULT_PACKAGE + className);
+        contextInfo.setFullQualifiedName(CommonConstants.RESULT_PACKAGE + className);
         contextInfo.setPojoClassName(className);
     }
 
