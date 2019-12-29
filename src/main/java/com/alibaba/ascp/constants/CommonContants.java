@@ -6,9 +6,6 @@ package com.alibaba.ascp.constants;
  */
 public class CommonContants {
     public static final String TAB = "    ";
-    public static final String resultPackage = "result.generate";
-    public static final String resultPath = "result/generate";
-
-    // 模板目录和输出目录
-    public static final String output = "src/main/java/" + CommonContants.resultPath;
+    public static final String RESULT_PACKAGE = "result.generate";
+    public static final String RESULT_PATH = "src/main/java/result/generate";
 }

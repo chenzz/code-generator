@@ -53,12 +53,12 @@ public class MapperGenerator {
         root.put("simpleClassName", simpleClassName);
         root.put("aliasName", aliasName);
         root.put("lowerClassName", ConvertUtils.convertFirstChar(simpleClassName, ConvertUtils.CONVERT_MODE.LOWER));
-        root.put("package", CommonContants.resultPackage);
+        root.put("package", CommonContants.RESULT_PACKAGE);
         root.put("author", contextInfo.getAuthor());
         root.put("date", date);
         root.put("tableName", contextInfo.getTableName());
         root.put("description", contextInfo.getPojoDescription());
-        root.put("mapperPackageName", CommonContants.resultPackage);
+        root.put("mapperPackageName", CommonContants.RESULT_PACKAGE);
         root.put("fullQualifiedPojoName", contextInfo.getFullQualifiedName());
 
         Map<String, String> templateOutputFileMap = new HashMap<>();
@@ -82,7 +82,7 @@ public class MapperGenerator {
             Template template = cfg.getTemplate(templateFileName,"UTF-8");
             String fileName = templateOutputFileMap.get(templateFileName);
             System.out.println("generating file: " + fileName);
-            Writer out = new OutputStreamWriter(new FileOutputStream(new File(CommonContants.output + "/" + fileName)),"UTF-8");
+            Writer out = new OutputStreamWriter(new FileOutputStream(new File(CommonContants.RESULT_PATH + "/" + fileName)),"UTF-8");
             template.process(root, out);
             out.flush();
             out.close();

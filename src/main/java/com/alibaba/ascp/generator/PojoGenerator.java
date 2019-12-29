@@ -78,18 +78,18 @@ public class PojoGenerator {
 
         root.put("className", className);
         root.put("result", resultStr);
-        root.put("package", CommonContants.resultPackage);
-        String output = "src/main/java/" + CommonContants.resultPath;
+        root.put("package", CommonContants.RESULT_PACKAGE);
+
         Template template = cfg.getTemplate("template/XxxPO.ftl","UTF-8");
         String fileName = className + ".java";
-        Writer out = new OutputStreamWriter(new FileOutputStream(new File(CommonContants.output + "/" + fileName)),"UTF-8");
+        Writer out = new OutputStreamWriter(new FileOutputStream(new File(CommonContants.RESULT_PATH + "/" + fileName)),"UTF-8");
         template.process(root, out);
         out.flush();
         out.close();
 
         contextInfo.setPojoFields(pojoFields);
         contextInfo.setDbFields(dbFields);
-        contextInfo.setFullQualifiedName("result." + className);
+        contextInfo.setFullQualifiedName(CommonContants.RESULT_PACKAGE + className);
         contextInfo.setPojoClassName(className);
     }
 
