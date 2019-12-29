@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Date;
 
 import com.alibaba.fastjson.JSONObject;
 import ${fullQualifiedPojoName};
@@ -40,7 +41,7 @@ public class ${simpleClassName}MapperTest {
     @Test
     public void testGetBy${keyIdNameUpper}() {
         ${className} ${className?uncap_first} = ${simpleClassName?uncap_first}Mapper
-                        .getBy${keyIdNameUpper}("junit-test");
+                        .getBy${keyIdNameUpper}(1L);
         if (${className?uncap_first} != null) {
             logger.info("${className?uncap_first} = " + JSONObject.toJSONString(${className?uncap_first}));
         } else {
@@ -50,7 +51,7 @@ public class ${simpleClassName}MapperTest {
 
     @Test
     public void testListBy${keyIdNameUpper}() {
-        List<${className}> list = ${simpleClassName?uncap_first}Mapper.listBy${keyIdNameUpper}("junit-test");
+        List<${className}> list = ${simpleClassName?uncap_first}Mapper.listBy${keyIdNameUpper}(1L);
         logger.info("list.size = " + list.size());
         for (${className} ${className?uncap_first} : list) {
             logger.info("${className?uncap_first} = " + JSONObject.toJSONString(${className?uncap_first}));
@@ -63,7 +64,7 @@ public class ${simpleClassName}MapperTest {
         // 自增主键的话去掉主键设置
         <#list javaFieldsList as field>
         <#assign fieldType=fieldTypeList[field_index]>
-        ${className?uncap_first}.set${field?cap_first}(<#if field?matches('.*Time$')>System.currentTimeMillis()<#elseif fieldType == "int" || fieldType == "long">1<#else>"junit-test"</#if>);
+        ${className?uncap_first}.set${field?cap_first}(<#if fieldType == "Date">new Date()<#elseif fieldType == "Integer">1<#elseif fieldType == "Long">1L<#else>"junit-test"</#if>);
         </#list>
         Long id = ${simpleClassName?uncap_first}Mapper.insert(${className?uncap_first});
         logger.info("id = " + id);
