@@ -89,7 +89,7 @@ public class PojoGenerator {
 
         contextInfo.setPojoFields(pojoFields);
         contextInfo.setDbFields(dbFields);
-        contextInfo.setFullQualifiedName(CommonConstants.RESULT_PACKAGE + className);
+        contextInfo.setFullQualifiedName(CommonConstants.RESULT_PACKAGE + "." + className);
         contextInfo.setPojoClassName(className);
     }
 
