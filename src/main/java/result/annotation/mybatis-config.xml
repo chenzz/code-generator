@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- mybatis的配置文件 -->
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 配置:http://mybatis.github.io/mybatis-3/configuration.html -->
+    <settings>
+        <setting name="cacheEnabled" value="true"/> <!-- 全局的映射器启用缓存 -->
+        <setting name="lazyLoadingEnabled" value="true"/> <!-- 全局启用延迟加载 -->
+        <setting name="multipleResultSetsEnabled" value="true"/>  <!-- 允许多种结果集从一个单独的语句中返回 -->
+        <setting name="useColumnLabel" value="true"/>  <!-- 使用列标签代替列名 -->
+        <setting name="defaultExecutorType" value="SIMPLE"/> <!-- 配置默认的执行器。SIMPLE执行器没有什么特别之处。REUSE执行器重用预处理语句 -->
+        <setting name="defaultStatementTimeout"
+                 value="120"/> <!-- Sets the number of seconds the driver will wait for a response from the database. -->
+    </settings>
+
+    <typeAliases>
+        <package name="com.alibaba.ascp.nfc.base.po"/>
+
+    </typeAliases>
+
+    <mappers>
+        <mapper resource="mybatis/mapper/fulfill-order-mapper.xml"/>
+    </mappers>
+</configuration>

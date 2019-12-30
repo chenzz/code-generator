@@ -11,7 +11,7 @@ import result.annotation.MyBatisMapper;
  * @date ${date}
  */
 @MyBatisMapper
-interface ${simpleClassName}Mapper {
+public interface ${simpleClassName}Mapper {
 
     /**
      * 根据${keyIdName}获取${description}
