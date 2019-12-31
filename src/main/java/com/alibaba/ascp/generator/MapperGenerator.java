@@ -41,8 +41,7 @@ public class MapperGenerator {
         String date = DateTimeUtils.formatDate(System.currentTimeMillis(), "yyyy/MM/dd.");
         // DB相关的总是被命名为XxxPO这种
         String simpleClassName = StringUtils.substringBefore(contextInfo.getPojoClassName(), "PO");
-        // mybatis相关总会有一个alias的存在
-        String aliasName = simpleClassName;
+
         Map<String, Object> root = new HashMap<String, Object>();
         root.put("keyIdName", CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, contextInfo.getKeyIdNameDB()));
         root.put("keyIdNameDescription", contextInfo.getKeyIdNameDescription());
@@ -51,7 +50,6 @@ public class MapperGenerator {
         root.put("keyIdType", contextInfo.getKeyIdType());
         root.put("className", contextInfo.getPojoClassName());
         root.put("simpleClassName", simpleClassName);
-        root.put("aliasName", aliasName);
         root.put("lowerClassName", ConvertUtils.convertFirstChar(simpleClassName, ConvertUtils.CONVERT_MODE.LOWER));
         root.put("package", CommonConstants.RESULT_PACKAGE);
         root.put("author", contextInfo.getAuthor());

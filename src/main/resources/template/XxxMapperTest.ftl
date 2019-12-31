@@ -12,7 +12,7 @@ import org.junit.Test;
 import java.util.List;
 import java.util.Date;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSON;
 import ${fullQualifiedPojoName};
 
 //import com.taobao.pandora.boot.test.junit4.PandoraBootRunner;
@@ -43,7 +43,7 @@ public class ${simpleClassName}MapperTest {
         ${className} ${className?uncap_first} = ${simpleClassName?uncap_first}Mapper
                         .getBy${keyIdNameUpper}(1L);
         if (${className?uncap_first} != null) {
-            logger.info("${className?uncap_first} = " + JSONObject.toJSONString(${className?uncap_first}));
+            logger.info("${className?uncap_first} = " + JSON.toJSONString(${className?uncap_first}));
         } else {
             logger.error("查询对象不存在!");
         }
@@ -54,7 +54,7 @@ public class ${simpleClassName}MapperTest {
         List<${className}> list = ${simpleClassName?uncap_first}Mapper.listBy${keyIdNameUpper}(1L);
         logger.info("list.size = " + list.size());
         for (${className} ${className?uncap_first} : list) {
-            logger.info("${className?uncap_first} = " + JSONObject.toJSONString(${className?uncap_first}));
+            logger.info("${className?uncap_first} = " + JSON.toJSONString(${className?uncap_first}));
         }
     }
 
@@ -83,7 +83,7 @@ public class ${simpleClassName}MapperTest {
         List<${className}> list = ${simpleClassName?uncap_first}Mapper.list(query${className});
         logger.info("list.size = " + list.size());
         for (${className} ${className?uncap_first} : list) {
-            logger.info("${className?uncap_first} = " + JSONObject.toJSONString(${className?uncap_first}));
+            logger.info("${className?uncap_first} = " + JSON.toJSONString(${className?uncap_first}));
         }
     }
 }

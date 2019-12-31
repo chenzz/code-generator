@@ -3,7 +3,7 @@
 <mapper namespace="${package}.${simpleClassName}Mapper">
 
     <!-- 定义数据库表字段和POJO类的字段映射关系 -->
-    <resultMap id="${simpleClassName}Map" type="${aliasName}">
+    <resultMap id="${simpleClassName}Map" type="${className}">
     <#list dbFieldsList as db>
         <#assign jf = javaFieldsList[db?index]>
         <result column="${db}" property="${jf}"/><#if db_has_next></#if>
@@ -25,7 +25,7 @@
     注意！！！！！！！！！！！！！！！！！！！上面和下面的只能保留一个！！！！！！看看key是不是唯一索引啊，骚年！！！
 
     <!-- 根据对应key查询获得对象列表 -->
-    <select id="listBy${keyIdNameUpper}" parameterType="${keyIdType}" resultMap="${simpleClassName}Map" >
+    <select id="listBy${keyIdNameUpper}" parameterType="${keyIdType?uncap_first}" resultMap="${simpleClassName}Map" >
         SELECT <include refid="allFields" />
         FROM ${tableName}
         WHERE ${keyIdNameDB} = ${r'#{'}${keyIdName}${r'}'}
@@ -33,7 +33,7 @@
 
     注意！！！！！！！！！gmt_create, gmt_modified这2个字段使用NOW填充，如果是自增ID，那插入语句中去掉id主键相关的，无需插入来着!!!!!!!!!
     <!-- 自增ID插入，插入完成后自动填充相应对象的ID -->
-    <insert id="insert" parameterType="${aliasName}" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insert" parameterType="${className}" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO ${tableName} (<#list dbFieldsList as dbField>${dbField}<#if dbField_has_next>, </#if></#list>)
         VALUES(<#list javaFieldsList as javaField>${r'#{'}${javaField}${r'}'}<#if javaField_has_next>, </#if></#list>)
     </insert>
@@ -59,12 +59,12 @@
         </where>
     </sql>
 
-    <select id="count" parameterType="Query${simpleClassName}" resultType="java.lang.Integer">
+    <select id="count" parameterType="Query${className}" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM ${tableName}
         <include refid="whereCondition"/>
     </select>
 
-    <select id="list" parameterType="Query${simpleClassName}" resultMap="${simpleClassName}Map">
+    <select id="list" parameterType="Query${className}" resultMap="${simpleClassName}Map">
         SELECT
         <include refid="allFields"/>
         FROM ${tableName}

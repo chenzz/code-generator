@@ -17,7 +17,7 @@
     </settings>
 
     <typeAliases>
-        <package name="com.alibaba.ascp.nfc.base.po"/>
+        <package name="result.generate"/>
 
     </typeAliases>
 
