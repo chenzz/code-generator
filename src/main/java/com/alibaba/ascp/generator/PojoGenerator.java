@@ -89,6 +89,18 @@ public class PojoGenerator {
 
         contextInfo.setPojoFields(pojoFields);
         contextInfo.setDbFields(dbFields);
+
+
+        for (i = 0; i < pojoFields.size(); i++) {
+
+            if ("gmtCreate".equals(pojoFields.get(i))) {
+                contextInfo.setGmtCreateIndex(i);
+            }
+            if ("gmtModified".equals(pojoFields.get(i))) {
+                contextInfo.setGmtModifiedIndex(i);
+            }
+        }
+
         contextInfo.setFullQualifiedName(CommonConstants.RESULT_PACKAGE + "." + className);
         contextInfo.setPojoClassName(className);
     }

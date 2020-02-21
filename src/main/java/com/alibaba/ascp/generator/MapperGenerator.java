@@ -68,8 +68,11 @@ public class MapperGenerator {
         generateFieldNames(root, contextInfo.getPojoFieldNameTypeMap(), contextInfo);
         // 数据库字段
         root.put("javaFieldsList", contextInfo.getPojoFields());
+        root.put("javaFieldsList4Insert", contextInfo.getPojoFields4Insert());
+        root.put("javaFieldsList4Update", contextInfo.getPojoFields4Update());
         // 数据库字段
         root.put("dbFieldsList", contextInfo.getDbFields());
+
 
         Configuration cfg = new Configuration(DEFAULT_INCOMPATIBLE_IMPROVEMENTS);
         cfg.setDirectoryForTemplateLoading(new File("src/main/resources"));

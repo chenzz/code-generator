@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.collections4.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +30,8 @@ public class ContextInfo {
     private String pojoDescription;
     private List<String> pojoFields;
     private List<String> dbFields;
-
+    Integer gmtCreateIndex = null;
+    Integer gmtModifiedIndex = null;
 
 
     // 用来做queryByXxx时的字段，
@@ -40,4 +43,37 @@ public class ContextInfo {
 
     // 对应的key类型，long、int、String什么的
     String keyIdType = "Long";
+
+    /**
+     * 对gmtCreate\gmtModified进行修饰
+     * @return
+     */
+    public List<String> getPojoFields4Insert() {
+
+        List<String> pojoFields4Insert = new ArrayList<>(pojoFields);
+
+        if (null != gmtCreateIndex) {
+            pojoFields4Insert.set(gmtCreateIndex, "NOW()");
+        }
+
+        if (null != gmtModifiedIndex) {
+            pojoFields4Insert.set(gmtModifiedIndex, "NOW()");
+        }
+
+        return pojoFields4Insert;
+    }
+
+    /**
+     * 对gmtCreate\gmtModified进行修饰
+     * @return
+     */
+    public List<String> getPojoFields4Update() {
+        List<String> pojoFields4Modified = new ArrayList<>(pojoFields);
+
+        if (null != gmtModifiedIndex) {
+            pojoFields4Modified.set(gmtModifiedIndex, "NOW()");
+        }
+
+        return pojoFields4Modified;
+    }
 }

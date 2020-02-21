@@ -31,12 +31,14 @@
         WHERE ${keyIdNameDB} = ${r'#{'}${keyIdName}${r'}'}
     </select>
 
-    注意！！！！！！！！！gmt_create, gmt_modified这2个字段使用NOW填充，如果是自增ID，那插入语句中去掉id主键相关的，无需插入来着!!!!!!!!!
+    注意！！！！！！！！！如果是自增ID，那插入语句中去掉id主键相关的，无需插入来着!!!!!!!!!
     <!-- 自增ID插入，插入完成后自动填充相应对象的ID -->
     <insert id="insert" parameterType="${className}" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO ${tableName} (<#list dbFieldsList as dbField>${dbField}<#if dbField_has_next>, </#if></#list>)
-        VALUES(<#list javaFieldsList as javaField>${r'#{'}${javaField}${r'}'}<#if javaField_has_next>, </#if></#list>)
+        VALUES(<#list javaFieldsList4Insert as javaField><#if javaField == "NOW()">${javaField}<#else>${r'#{'}${javaField}${r'}'}</#if><#if javaField_has_next>, </#if></#list>)
     </insert>
+
+
 
     注意！！！！！！！！！！！！！！！！！！！whereCondition要调整才能用啊，比如startTime这种，别不管啊！！！！！！！！！！！
     <sql id="whereCondition">
