@@ -29,6 +29,7 @@ public class ConvertUtils {
         mysqlTypeMap.put("timestamp", "Date");
         // 此处的Date是java.util.Date
         mysqlTypeMap.put("datetime", "Date");
+        mysqlTypeMap.put("date", "Date");
         mysqlTypeMap.put("tinyint", "Integer");
 
 
