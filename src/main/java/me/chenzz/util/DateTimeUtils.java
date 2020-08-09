@@ -1,4 +1,4 @@
-package com.alibaba.ascp.util;
+package me.chenzz.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

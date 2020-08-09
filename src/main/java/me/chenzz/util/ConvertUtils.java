@@ -1,4 +1,4 @@
-package com.alibaba.ascp.util;
+package me.chenzz.util;
 
 import com.google.common.base.CaseFormat;
 import org.apache.commons.lang3.CharUtils;

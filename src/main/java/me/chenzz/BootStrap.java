@@ -1,8 +1,8 @@
-package com.alibaba.ascp;
+package me.chenzz;
 
-import com.alibaba.ascp.generator.MapperGenerator;
-import com.alibaba.ascp.generator.PojoGenerator;
-import com.alibaba.ascp.pojo.ContextInfo;
+import me.chenzz.generator.MapperGenerator;
+import me.chenzz.generator.PojoGenerator;
+import me.chenzz.pojo.ContextInfo;
 import freemarker.template.TemplateException;
 
 import java.io.IOException;

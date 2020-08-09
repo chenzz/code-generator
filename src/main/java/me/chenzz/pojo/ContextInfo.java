@@ -1,4 +1,4 @@
-package com.alibaba.ascp.pojo;
+package me.chenzz.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

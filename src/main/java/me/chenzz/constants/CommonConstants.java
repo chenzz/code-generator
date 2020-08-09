@@ -1,4 +1,4 @@
-package com.alibaba.ascp.constants;
+package me.chenzz.constants;
 
 /**
  * @author junhao

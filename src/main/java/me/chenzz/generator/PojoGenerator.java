@@ -1,4 +1,4 @@
-package com.alibaba.ascp.generator;
+package me.chenzz.generator;
 
 import java.io.*;
 import java.util.HashMap;
@@ -8,15 +8,14 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.alibaba.ascp.constants.CommonConstants;
-import com.alibaba.ascp.pojo.ContextInfo;
-import com.alibaba.ascp.util.ConvertUtils;
+import me.chenzz.constants.CommonConstants;
+import me.chenzz.pojo.ContextInfo;
+import me.chenzz.util.ConvertUtils;
 import freemarker.template.*;
 import org.apache.commons.io.IOUtils;
 
 import com.google.common.collect.Lists;
 
-import static com.alibaba.ascp.constants.CommonConstants.TAB;
 import static freemarker.template.Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS;
 
 /**
@@ -58,9 +57,9 @@ public class PojoGenerator {
                     String javaType = ConvertUtils.convertMySqlType2JavaType(m.group(2));
                     String comment = m.group(3);
 
-                    resultStr += TAB + "/**" + "\n";
-                    resultStr += TAB + " * " + comment + "\n";
-                    resultStr += TAB + " */" + "\n";
+                    resultStr += CommonConstants.TAB + "/**" + "\n";
+                    resultStr += CommonConstants.TAB + " * " + comment + "\n";
+                    resultStr += CommonConstants.TAB + " */" + "\n";
                     resultStr += String.format("    private %s %s;", javaType, name) + "\n";
                     pojoFieldNameTypeMap.put(name, javaType);
                 }
